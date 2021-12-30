@@ -25,5 +25,16 @@ pub fn day01() {
         }
     }
 
-    println!("Day 01 - Part 1: {}", count)
+    println!("Day 01 - Part 1: {}", count);
+
+    count = 0;
+
+    for i in nums.windows(4) {
+        // 0 + 1 + 2 < 1 + 2 + 3
+        if i[0] < i[3] {
+            count += 1;
+        }
+    }
+
+    println!("Day 01 - Part 2: {}", count);
 }
