@@ -1,15 +1,8 @@
-use std::fs::File;
-use std::io::{BufReader, BufRead};
+use crate::utils::read_file;
 
 pub fn day02() {
-    // read file and load it to a buffer
-    let file = File::open("inputs/day02.txt").expect("file not found");
-    let buf = BufReader::new(file);
-
     // get lines from file and parse to vec of string.
-    let lines = buf.lines()
-        .map(|line| line.unwrap())
-        .collect::<Vec<String>>();
+    let lines = read_file("inputs/day02.txt");
 
     println!("Day 02 - Part 1: {}", part1(&lines));
     println!("Day 02 - Part 2: {}", part2(&lines));
@@ -50,7 +43,8 @@ fn part2(commands: &[String]) -> i32 {
             x => panic!("unknown command {}", x),
         };
     }
-    return hpos * depth;
+
+    hpos * depth
 }
 
 #[cfg(test)]
